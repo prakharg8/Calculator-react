@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button from './Button';
+import CalcButton from './CalcButton';
 import OutputScreen from './OutputScreen';
 
 function Calculator() {
@@ -16,8 +16,20 @@ function Calculator() {
         const value = event.target.value;
         switch (value) {
             case '=': {
-                setA(eval(question));
-                setQ("");
+                var ans;
+                try {
+                    ans = eval(question);
+                }
+                catch (err) {
+                    setA("Math Error");
+                }
+                if (ans === undefined) {
+                    setA("Math Error");
+                }
+                else {
+                    setA(ans);
+                    setQ("");
+                }
                 break;
             }
             case 'Clear': {
@@ -36,11 +48,13 @@ function Calculator() {
         }
     }
     return (
-        <div>
-            <OutputScreen question={question} answer={answer} />
-            {nos.map(n => {
-                return <div>{n.map(i => { return <Button Label={i} OnClick={handleClick} />; })}</div>
-            })}
+        <div className='calculator-outer'>
+            <div className='calculator-main'>
+                <OutputScreen question={question} answer={answer} />
+                {nos.map(n => {
+                    return <div className='button-row'>{n.map(i => { return <CalcButton Label={i} OnClick={handleClick} />; })}</div>
+                })}
+            </div>
         </div>
     );
 }

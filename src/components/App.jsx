@@ -5,7 +5,7 @@ function App() {
     const title = "Calculator";
     return (
         <div>
-            <h1>{title}</h1>
+            <h1 className='calculator-title'>{title}</h1>
             <Calculator />
         </div>
     );

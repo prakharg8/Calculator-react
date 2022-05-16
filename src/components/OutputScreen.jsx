@@ -3,7 +3,7 @@ import OutputScreenRow from './OutputScreenRow';
 
 function OutputScreen(props) {
     return (
-        <div>
+        <div className='screen'>
             <OutputScreenRow Value={props.question} />
             <OutputScreenRow Value={props.answer} />
         </div>

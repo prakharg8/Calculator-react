@@ -2,7 +2,7 @@ import React from 'react';
 
 function OutputScreenRow(props) {
     return (
-        <div>
+        <div className='screen-row'>
             <input type='text' readOnly value={props.Value} />
         </div>
     );
